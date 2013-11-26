@@ -17,7 +17,10 @@
 <c:url value="/addHotel" var="addHotelUrl"></c:url>
 <form:form action="${addHotelUrl}" method="POST" modelAttribute="hotel">
     <form:input path="name" class="input_field" size="20" maxlength="50" type="text" placeholder="Имя" AUTOCOMPLETE="off" />
+    <form:input path="hotelClass" class="input_field" size="20" maxlength="50" placeholder="Местонахожденин" AUTOCOMPLETE="off"/>
+    <form:input path="numberOfApartments" class="input_field" size="20" maxlength="5550" placeholder="Местонахожденин" AUTOCOMPLETE="off"/>
     <form:input path="location" class="input_field" size="20" maxlength="50" placeholder="Местонахожденин" AUTOCOMPLETE="off"/>
+    <form:input path="info" class="input_field" size="20" maxlength="50" placeholder="Местонахожденин" AUTOCOMPLETE="off"/>
     <input class="input_submit" type="submit" value="Добавить" />
 </form:form>
 </body>

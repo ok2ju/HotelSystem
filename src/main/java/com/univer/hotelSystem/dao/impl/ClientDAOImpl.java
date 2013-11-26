@@ -2,7 +2,10 @@ package com.univer.hotelSystem.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -44,11 +47,10 @@ public class ClientDAOImpl implements ClientDAO {
 		return client;
 	}
 
-	public Client findClientByUsername(String login) {
-		Client client = (Client) sessionFactory.getCurrentSession()
-				.load(Client.class, login);
-
-		return client;
+	public Client findClientByUsername(String login) {		
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Client.class);
+		criteria.add(Restrictions.like("userName", login));
+		return (Client) criteria.uniqueResult();
 	}
 
 }

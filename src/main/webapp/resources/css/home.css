@@ -1,0 +1,26 @@
+#wrap #content{
+	margin-top: 80px;
+}
+
+#wrap #content .left-block{
+	width: 700px;
+	float: left;
+	border-right: 1px solid black;
+}
+
+#wrap #content .left-block .hotel-info img{
+	width: 400px;
+	height: 200px;
+	float: left;
+}
+
+#wrap #content .left-block .hotel-info span{
+	float: left;
+}
+
+#wrap #content .right-block{
+	width: 440px;
+	height: 80px;
+	float: left;
+	background-color: red;
+}
