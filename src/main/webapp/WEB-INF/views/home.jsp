@@ -30,8 +30,8 @@
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="#about">My Profile</a></li>
+              <li><a href="#contact">Make a reservation</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -54,8 +54,14 @@
         <div class="left-block">
         	<div class="hotel-info">
         		<img src="<c:url value="resources/img/marinabay.jpg"/>" />
-        		<p>Marina Bay Sands</p>
-        		<span>Location</span>
+        		<div class="info">
+        			<h2>Marina Bay Sands</h2>
+        			<p>Location:</p>
+        			<p>Class:</p>
+        			<p>Number of Apartments:</p>
+        		</div>
+        	</div>
+        	<div class="about-hotel">
         		<span>marina bay sandsmarina bay sandsmarina bay sandsmarina bay sandsmarina bay sandsmarina bay sands
         		marina bay sandsmarina bay sandsmarina bay sandsmarina bay sandsmarina bay sands
         		marina bay sandsmarina bay sandsmarina bay sandsmarina bay sandsmarina bay sandsmarina bay sandsmarina bay sands

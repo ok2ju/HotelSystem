@@ -2,15 +2,17 @@ package com.univer.hotelSystem.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.univer.hotelSystem.domain.Client;
-import com.univer.hotelSystem.domain.Hotel;
 import com.univer.hotelSystem.service.ClientService;
 
 @Controller
@@ -36,8 +38,8 @@ public class RegistrationController {
 	}
 	
 	@RequestMapping(value="/home", method=RequestMethod.GET)
-	public String homeHotel(Map<String, Object> map){	
-		map.put("client", new Client());
+	public String homeHotel(Map<String, Object> map, HttpSession session){	
+		map.put("client", session.getAttribute("client"));
 		
 		return "home";
 	}
@@ -50,16 +52,20 @@ public class RegistrationController {
 	
 	
 	@RequestMapping(value="/signin", method=RequestMethod.POST)
-	public String processLogin(@ModelAttribute(value = "client") Client client, Map<String, Object> map){
+	public ModelAndView processLogin(@ModelAttribute(value = "client") Client client, HttpSession session){
 		Client testClient = clientService.findClientByUsername(client.getUserName());
+		
+		ModelAndView mav = new ModelAndView();
 		
 		if(testClient.getPassword().equals(client.getPassword())){
 			client = testClient;
-			map.put("client", client);
-			return "home";
+			//mav.addObject("client", client);
+			session.setAttribute("client", client);
+			mav.setViewName("redirect:/home");
 		}else{
-			return "signin";
+			mav.setViewName("signin");
 		}
+		return mav;
 	}
 	
 }
