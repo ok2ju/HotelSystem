@@ -3,6 +3,7 @@ package com.univer.hotelSystem.dao.impl;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.univer.hotelSystem.dao.ApartmentDAO;
@@ -11,6 +12,7 @@ import com.univer.hotelSystem.domain.Apartment;
 @Repository
 public class ApartmentDAOImpl implements ApartmentDAO {
 
+	@Autowired
 	SessionFactory sessionFactory;
 
 	public void saveApartment(Apartment apartment) {

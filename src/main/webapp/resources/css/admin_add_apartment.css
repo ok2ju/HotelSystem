@@ -1,0 +1,14 @@
+#wrap form{
+	margin-top: 100px;
+	max-width: 380px;
+	margin: 100px auto;
+}
+
+#wrap form label{
+	display: block;
+}
+
+#wrap form input{
+	float: left;
+	width: 380px;
+}

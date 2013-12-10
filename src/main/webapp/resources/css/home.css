@@ -8,19 +8,40 @@
 	border-right: 1px solid black;
 }
 
+#wrap #content .left-block .hotel-info{
+	width: 700px;
+	height: 230px;
+}
+
 #wrap #content .left-block .hotel-info img{
 	width: 400px;
 	height: 200px;
 	float: left;
 }
 
-#wrap #content .left-block .hotel-info span{
+#wrap #content .left-block .hotel-info .info{
 	float: left;
+	height: 200px;
+	width: 299px;
+	padding-left: 30px;
+}
+
+#wrap #content .left-block .hotel-info .info h2{
+	margin-top: 0px;
+}
+
+#wrap #content .left-block .about-hotel{
+	
 }
 
 #wrap #content .right-block{
 	width: 440px;
 	height: 80px;
 	float: left;
-	background-color: red;
+}
+
+#wrap #content .right-block .single-comment{
+	padding-left: 30px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid black;
 }

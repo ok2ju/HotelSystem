@@ -8,8 +8,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="<c:url value="resources/css/bootstrap.min.css"/>" />
-<link rel="stylesheet" type="text/css" href="<c:url value="resources/css/home.css"/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value="resources/css/admin_add_apartment.css"/>" />
 <title>Home Page</title>
+<style>
+	#wrap .panel-heading{
+		margin-top: 50px;
+	}
+	
+	#wrap .panel .table thead{
+		background-color: grey;
+	}
+</style>
 </head>
 <body>
 	    <!-- Wrap all page content here -->
@@ -25,23 +34,23 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">${client.getUserName()}</a>
+            <a class="navbar-brand" href="#">ADMIN NAME</a>
           </div>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">My Profile</a></li>
-              <li><a href="#contact">Make a reservation</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <li><a href="<c:url value="listHotels"/>">Add/delete Hotel</a></li>
+              <li>
+              	<a href="#contact" class="dropdown-toggle" data-toggle="dropdown">Apartment menu<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li class="dropdown-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
+                  <li><a href="<c:url value="listApartments"/>">Show apartment list</a></li>
+                  <li><a href="#">Add apartment</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">User menu <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="<c:url value="listClients"/>">Show user list</a></li>
                 </ul>
               </li>
             </ul>
@@ -49,29 +58,36 @@
         </div>
       </div>
 
-      <!-- Begin page content -->
-      <div class="container" id="content">
-        <div class="left-block">
-        	<div class="hotel-info">
-        		<img src="<c:url value="resources/img/marinabay.jpg"/>" />
-        		<div class="info">
-        			<h2>${hotel.getName()}</h2>
-        			<p>Location: ${hotel.getLocation()}</p>
-        			<p>Class: ${hotel.getHotelClass()}</p>
-        			<p>Number of Apartments: ${hotel.getNumberOfApartments()}</p>
-        		</div>
-        	</div>
-        	<div class="about-hotel">
-        		<span>${hotel.getInfo()}</span>
-        	</div>
-        </div>
-        <div class="right-block">
-        	<div class="single-comment">
-        		<h4>Name LastName</h4>
-        		<span>Comment Text</span>
-        	</div>
-        </div>
-      </div>
+	<div class="panel panel-default">
+		<div class="panel-heading">Apartments list</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>#Room</th>
+					<th>Class</th>
+					<th>Count</th>
+					<th>Floor</th>
+					<th>Info</th>
+					<th>Cost</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="apartment" items="${apartments}">
+					<tr>
+						<td>${apartment.numberOfRoom}</td>
+						<td>${apartment.classApartment}</td>
+						<td>${apartment.numberOfRooms}</td>
+						<td>${apartment.floor}</td>
+						<td>${apartment.info}</td>
+						<td>${apartment.cost}</td>
+						<td><a class="btn remove" href="">Remove</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+		
     </div>
 	
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>

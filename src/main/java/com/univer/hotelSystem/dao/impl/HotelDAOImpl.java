@@ -1,5 +1,7 @@
 package com.univer.hotelSystem.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -28,6 +30,17 @@ public class HotelDAOImpl implements HotelDAO {
 		if (hotel != null) {
 			sessionFactory.getCurrentSession().delete(hotel);
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Hotel> listHotel() {
+		return sessionFactory.getCurrentSession().createQuery("from Hotel").list();
+	}
+
+	public Hotel findHotelById(Integer id) {
+		Hotel hotel = (Hotel) sessionFactory.getCurrentSession().load(Hotel.class, id);
+		
+		return hotel;
 	}
 
 }

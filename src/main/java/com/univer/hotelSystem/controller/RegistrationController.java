@@ -14,12 +14,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.univer.hotelSystem.domain.Client;
 import com.univer.hotelSystem.service.ClientService;
+import com.univer.hotelSystem.service.HotelService;
 
 @Controller
 public class RegistrationController {
 	
 	@Autowired
 	private ClientService clientService;
+	
+	@Autowired
+	private HotelService hotelService;
 	
 	@RequestMapping(value="/registration", method=RequestMethod.GET)
 	public String registrationForm(Model model){
@@ -40,6 +44,7 @@ public class RegistrationController {
 	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public String homeHotel(Map<String, Object> map, HttpSession session){	
 		map.put("client", session.getAttribute("client"));
+		map.put("hotel", hotelService.findHotelById(1));
 		
 		return "home";
 	}
