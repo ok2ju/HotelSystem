@@ -14,10 +14,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.univer.hotelSystem.domain.Apartment;
 import com.univer.hotelSystem.domain.Client;
 import com.univer.hotelSystem.domain.Hotel;
-import com.univer.hotelSystem.domain.User;
+import com.univer.hotelSystem.domain.Service;
 import com.univer.hotelSystem.service.ApartmentService;
 import com.univer.hotelSystem.service.ClientService;
 import com.univer.hotelSystem.service.HotelService;
+import com.univer.hotelSystem.service.ServiceService;
 
 @Controller
 public class AdminController {
@@ -30,6 +31,9 @@ public class AdminController {
 	
 	@Autowired
 	private ClientService clientService;
+	
+	@Autowired
+	private ServiceService serviceService;
 	
 	@RequestMapping(value="/admin", method=RequestMethod.GET)
 	public String apartmentForm(Model model){
@@ -59,6 +63,14 @@ public class AdminController {
 		return model;
 	}
 	
+	@RequestMapping(value = "removeApartment/{apartmentId}", method = RequestMethod.GET)
+	public ModelAndView removeApartmentbyAdmin(@PathVariable Integer apartmentId){
+		ModelAndView model = new ModelAndView("redirect:/listApartments");
+		apartmentService.deleteApartment(apartmentId);
+		
+		return model;
+	}
+	
 	@RequestMapping(value="/listHotels", method=RequestMethod.GET)
 	public ModelAndView showHotel(){
 		ModelAndView model = new ModelAndView("show_hotel_list");
@@ -81,6 +93,37 @@ public class AdminController {
 	public ModelAndView removeUser(@PathVariable Integer userId){
 		ModelAndView model = new ModelAndView("redirect:/listClients");
 		clientService.removeClientById(userId);
+		
+		return model;
+	}
+	
+	@RequestMapping(value="/service", method=RequestMethod.GET)
+	public String serviceForm(Model model){
+		model.addAttribute("service", new Service());
+		
+		return "admin_add_service";
+	}
+	
+	@RequestMapping(value="/addService", method=RequestMethod.POST)
+	public String addService(@ModelAttribute("service") Service service){
+		serviceService.addService(service);
+		
+		return "admin_add_service";
+	}
+	
+	@RequestMapping(value="/listServices", method=RequestMethod.GET)
+	public ModelAndView showServices(){
+		ModelAndView model = new ModelAndView("show_service_list");
+		List<Service> services = serviceService.listService();
+		model.addObject("services", services);
+		
+		return model;
+	}
+	
+	@RequestMapping(value = "removeService/{serviceId}", method = RequestMethod.GET)
+	public ModelAndView removeService(@PathVariable Integer serviceId){
+		ModelAndView model = new ModelAndView("redirect:/listServices");
+		serviceService.deleteService(serviceId);
 		
 		return model;
 	}

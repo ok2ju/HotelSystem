@@ -40,6 +40,9 @@ public class Apartment {
 	@Column(name="cost")
 	private double cost;
 	
+	@Column(name="flag")
+	private String flag;
+	
 	@ManyToMany
 	@JoinTable(name="JOIN_APARTMENT_SERVICE",
 				joinColumns={@JoinColumn(name="apartment_id")},
@@ -49,6 +52,10 @@ public class Apartment {
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="hotel_id")
 	private Hotel hotel;
+	
+	public Apartment(){
+		this.flag = "empty";
+	}
 
 	public String getClassApartment() {
 		return classApartment;
@@ -120,5 +127,13 @@ public class Apartment {
 
 	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
+	}
+
+	public String getFlag() {
+		return flag;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
 	}
 }

@@ -34,30 +34,23 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">ADMIN NAME</a>
+            <a class="navbar-brand" href="#">${client.getUserName()}</a>
           </div>
-          <div class="collapse navbar-collapse">
+		  <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="<c:url value="listHotels"/>">Add/delete Hotel</a></li>
-              <li>
-              	<a href="#contact" class="dropdown-toggle" data-toggle="dropdown">Apartment menu<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="<c:url value="listApartments"/>">Show apartment list</a></li>
-                  <li><a href="<c:url value="admin"/>">Add apartment</a></li>
-                </ul>
-              </li>
+              <li><a href="#about">My Profile</a></li>
+              <li><a href="<c:url value="reservate"/>">Make a reservation</a></li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">User menu <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="<c:url value="listClients"/>">Show user list</a></li>
-                </ul>
-              </li>
-              <li>
-              	<a href="#contact" class="dropdown-toggle" data-toggle="dropdown">Service menu<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="<c:url value="listServices"/>">Show service list</a></li>
-                  <li><a href="<c:url value="service"/>">Add service</a></li>
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
                 </ul>
               </li>
             </ul>
@@ -66,29 +59,23 @@
       </div>
 
 	<div class="panel panel-default">
-		<div class="panel-heading">Clients list</div>
+		<div class="panel-heading">Choose your services</div>
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Login</th>
 					<th>Name</th>
-					<th>Middle Name</th>
-					<th>Last Name</th>
-					<th>Password</th>
-					<th>Email</th>
+					<th>Cost</th>
+					<th>Info</th>
 					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="client" items="${clients}">
+				<c:forEach var="service" items="${services}">
 					<tr>
-						<td>${client.userName}</td>
-						<td>${client.firstName}</td>
-						<td>${client.middleName}</td>
-						<td>${client.lastName}</td>
-						<td>${client.password}</td>
-						<td>${client.email}</td>
-						<td><a class="btn remove" href="<c:url value="/remove/${client.id}"/>">Remove</a></td>
+						<td>${service.name}</td>
+						<td>${service.cost}</td>
+						<td>${service.info}</td>
+						<td><a class="btn remove" href="<c:url value="/userAddService/${service.id}"/>">Add Service</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

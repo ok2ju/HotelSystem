@@ -11,11 +11,18 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="resources/css/home.css"/>" />
 <title>Home Page</title>
 <style>
-	#wrap .container .right-block input{
-		margin-left: 10px;
-		margin-top: 10px;
-		width: 420px;
-		height: 100px;
+	#wrap .container form{
+		margin: 0 auto;
+		width: 160px;
+	}
+
+	#wrap .container form label{
+		display: block;
+	}
+	
+	#wrap .container form .input_submit{
+		width: 155px;
+		margin-top: 20px;
 	}
 </style>
 </head>
@@ -38,8 +45,8 @@
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="<c:url value="userProfile"/>">My Profile</a></li>
-              <li><a href="<c:url value="reservate"/>">Make a reservation</a></li>
+              <li><a href="#about">My Profile</a></li>
+              <li><a href="#contact">Make a reservation</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -59,35 +66,16 @@
 
       <!-- Begin page content -->
       <div class="container" id="content">
-        <div class="left-block">
-        	<div class="hotel-info">
-        		<img src="<c:url value="resources/img/marinabay.jpg"/>" />
-        		<div class="info">
-        			<h2>${hotel.getName()}</h2>
-        			<p>Location: ${hotel.getLocation()}</p>
-        			<p>Class: ${hotel.getHotelClass()}</p>
-        			<p>Number of Apartments: ${hotel.getNumberOfApartments()}</p>
-        		</div>
-        	</div>
-        	<div class="about-hotel">
-        		<span>${hotel.getInfo()}</span>
-        	</div>
-        </div>
-        <div class="right-block">
-        	<div class="single-comment">
-        		<table>
-        			<tbody>
-        				<c:forEach var="comment" items="${comments}">
-							<tr>
-								<td>${comment.text}</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-        		</table>
-        	</div>
-        	<input path="text" class="textbox" type="text">
-        	<a class="btn remove" href="<c:url value="postComment"/>">Post</a>
-        </div>
+      	<c:url value="/reservate" var="reservate"></c:url>
+	  	<form:form action="${reservate}" method="POST" modelAttribute="apartment">
+	  		<label>Count of rooms</label>
+		    <form:input path="numberOfRooms" class="input_field" size="20" maxlength="50" type="text" placeholder="number of rooms" AUTOCOMPLETE="off" />
+		    <label>Class apartment</label>
+		    <form:input path="classApartment" class="input_field" size="20" maxlength="50" placeholder="class apartment" AUTOCOMPLETE="off"/>
+		    <label>Floor</label>
+		    <form:input path="floor" class="input_field" size="20" maxlength="5550" placeholder="floor" AUTOCOMPLETE="off"/>
+		    <input class="input_submit" type="submit" value="Search" />
+		</form:form>
       </div>
     </div>
 	

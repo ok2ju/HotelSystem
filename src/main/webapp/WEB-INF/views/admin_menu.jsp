@@ -10,15 +10,6 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="resources/css/bootstrap.min.css"/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value="resources/css/admin_add_apartment.css"/>" />
 <title>Home Page</title>
-<style>
-	#wrap .panel-heading{
-		margin-top: 50px;
-	}
-	
-	#wrap .panel .table thead{
-		background-color: grey;
-	}
-</style>
 </head>
 <body>
 	    <!-- Wrap all page content here -->
@@ -64,36 +55,8 @@
           </div><!--/.nav-collapse -->
         </div>
       </div>
-
-	<div class="panel panel-default">
-		<div class="panel-heading">Clients list</div>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Login</th>
-					<th>Name</th>
-					<th>Middle Name</th>
-					<th>Last Name</th>
-					<th>Password</th>
-					<th>Email</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="client" items="${clients}">
-					<tr>
-						<td>${client.userName}</td>
-						<td>${client.firstName}</td>
-						<td>${client.middleName}</td>
-						<td>${client.lastName}</td>
-						<td>${client.password}</td>
-						<td>${client.email}</td>
-						<td><a class="btn remove" href="<c:url value="/remove/${client.id}"/>">Remove</a></td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
+      
+      <p>IT'S ADMIN MENU</p>
 		
     </div>
 	

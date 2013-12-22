@@ -1,5 +1,6 @@
 package com.univer.hotelSystem.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.univer.hotelSystem.domain.Client;
+import com.univer.hotelSystem.domain.Comment;
 import com.univer.hotelSystem.service.ClientService;
+import com.univer.hotelSystem.service.CommentService;
 import com.univer.hotelSystem.service.HotelService;
 
 @Controller
@@ -24,6 +27,9 @@ public class RegistrationController {
 	
 	@Autowired
 	private HotelService hotelService;
+	
+	@Autowired
+	private CommentService commentService;
 	
 	@RequestMapping(value="/registration", method=RequestMethod.GET)
 	public String registrationForm(Model model){
@@ -38,13 +44,15 @@ public class RegistrationController {
 		
 		clientService.saveClient(client);
 		
-		return "home";
+		return "signin";
 	}
 	
 	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public String homeHotel(Map<String, Object> map, HttpSession session){	
 		map.put("client", session.getAttribute("client"));
 		map.put("hotel", hotelService.findHotelById(1));
+		List<Comment> comments = commentService.commentsList();
+		map.put("comment", comments);
 		
 		return "home";
 	}

@@ -16,7 +16,7 @@ public class ServiceDAOImpl implements ServiceDAO {
 	SessionFactory sessionFactory;
 
 	public void addService(Service service) {
-		sessionFactory.getCurrentSession().save(service);
+		sessionFactory.getCurrentSession().saveOrUpdate(service);
 	}
 	
 	public void updateService(Service service) {

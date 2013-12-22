@@ -15,4 +15,6 @@ public interface ApartmentService {
 	public void deleteApartment(Integer id);
 
 	public Apartment getApartmentById(Integer id);
+	
+	public List<Apartment> findApartmentByCriteria(int numberOfRooms, String classApartment, int floor);
 }

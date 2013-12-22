@@ -2,7 +2,10 @@ package com.univer.hotelSystem.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +19,7 @@ public class ApartmentDAOImpl implements ApartmentDAO {
 	SessionFactory sessionFactory;
 
 	public void saveApartment(Apartment apartment) {
-		sessionFactory.getCurrentSession().save(apartment);
+		sessionFactory.getCurrentSession().saveOrUpdate(apartment);
 
 	}
 
@@ -45,6 +48,29 @@ public class ApartmentDAOImpl implements ApartmentDAO {
 				.load(Apartment.class, id);
 
 		return apartment;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Apartment> findApartmentByCriteria(int numberOfRooms, String classApartment, int floor) {
+		Apartment exampleApartment = new Apartment();
+		exampleApartment.setClassApartment(classApartment);
+		exampleApartment.setNumberOfRooms(numberOfRooms);
+		exampleApartment.setFloor(floor);
+		
+		Criteria cr = getCurrentSession().createCriteria(Apartment.class);
+		cr
+			.add(Restrictions.like("numberOfRooms", numberOfRooms))
+			.add(Restrictions.like("classApartment", classApartment))
+			.add(Restrictions.like("floor", floor))
+			.add(Restrictions.like("flag", "empty"));
+		
+		List<Apartment> apartments = cr.list();
+		
+		return apartments;
+	}
+	
+	public Session getCurrentSession() {
+		return sessionFactory.getCurrentSession();
 	}
 
 }

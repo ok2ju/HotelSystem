@@ -44,6 +44,13 @@
                   <li><a href="<c:url value="listClients"/>">Show user list</a></li>
                 </ul>
               </li>
+              <li>
+              	<a href="#contact" class="dropdown-toggle" data-toggle="dropdown">Service menu<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="<c:url value="listServices"/>">Show service list</a></li>
+                  <li><a href="<c:url value="service"/>">Add service</a></li>
+                </ul>
+              </li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

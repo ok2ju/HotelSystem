@@ -70,25 +70,19 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Login</th>
 					<th>Name</th>
-					<th>Middle Name</th>
-					<th>Last Name</th>
-					<th>Password</th>
-					<th>Email</th>
+					<th>Cost</th>
+					<th>Info</th>
 					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="client" items="${clients}">
+				<c:forEach var="service" items="${services}">
 					<tr>
-						<td>${client.userName}</td>
-						<td>${client.firstName}</td>
-						<td>${client.middleName}</td>
-						<td>${client.lastName}</td>
-						<td>${client.password}</td>
-						<td>${client.email}</td>
-						<td><a class="btn remove" href="<c:url value="/remove/${client.id}"/>">Remove</a></td>
+						<td>${service.name}</td>
+						<td>${service.cost}</td>
+						<td>${service.info}</td>
+						<td><a class="btn remove" href="<c:url value="/removeService/${service.id}"/>">Remove</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

@@ -44,13 +44,20 @@
               	<a href="#contact" class="dropdown-toggle" data-toggle="dropdown">Apartment menu<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="<c:url value="listApartments"/>">Show apartment list</a></li>
-                  <li><a href="#">Add apartment</a></li>
+                  <li><a href="<c:url value="admin"/>">Add apartment</a></li>
                 </ul>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">User menu <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="<c:url value="listClients"/>">Show user list</a></li>
+                </ul>
+              </li>
+              <li>
+              	<a href="#contact" class="dropdown-toggle" data-toggle="dropdown">Service menu<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="<c:url value="listServices"/>">Show service list</a></li>
+                  <li><a href="<c:url value="service"/>">Add service</a></li>
                 </ul>
               </li>
             </ul>
@@ -81,7 +88,7 @@
 						<td>${apartment.floor}</td>
 						<td>${apartment.info}</td>
 						<td>${apartment.cost}</td>
-						<td><a class="btn remove" href="">Remove</a></td>
+						<td><a class="btn remove" href="<c:url value="/removeApartment/${apartment.id}"/>">Remove</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

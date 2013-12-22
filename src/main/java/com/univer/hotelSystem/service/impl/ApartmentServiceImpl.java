@@ -43,5 +43,10 @@ public class ApartmentServiceImpl implements ApartmentService {
 	public Apartment getApartmentById(Integer id) {
 		return apartmentDAO.getApartmentById(id);
 	}
+	
+	@Transactional
+	public List<Apartment> findApartmentByCriteria(int numberOfRooms, String classApartment, int floor) {
+		return apartmentDAO.findApartmentByCriteria(numberOfRooms, classApartment, floor);
+	}
 
 }
