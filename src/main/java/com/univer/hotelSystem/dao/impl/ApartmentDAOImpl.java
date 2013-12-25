@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.univer.hotelSystem.dao.ApartmentDAO;
 import com.univer.hotelSystem.domain.Apartment;
+import com.univer.hotelSystem.domain.Service;
 
 @Repository
 public class ApartmentDAOImpl implements ApartmentDAO {
@@ -19,7 +20,7 @@ public class ApartmentDAOImpl implements ApartmentDAO {
 	SessionFactory sessionFactory;
 
 	public void saveApartment(Apartment apartment) {
-		sessionFactory.getCurrentSession().saveOrUpdate(apartment);
+		sessionFactory.getCurrentSession().merge(apartment);
 
 	}
 
@@ -71,6 +72,14 @@ public class ApartmentDAOImpl implements ApartmentDAO {
 	
 	public Session getCurrentSession() {
 		return sessionFactory.getCurrentSession();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Service> getAllServicesByApartmentId(Integer id) {
+		Criteria cr = getCurrentSession().createCriteria(Service.class);
+		cr.createAlias("apartment", "apartment");
+		cr.add(Restrictions.like("apartment.id", id));
+		return (List<Service>) cr.list();
 	}
 
 }

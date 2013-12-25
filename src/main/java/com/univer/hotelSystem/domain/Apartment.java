@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -43,7 +44,7 @@ public class Apartment {
 	@Column(name="flag")
 	private String flag;
 	
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name="JOIN_APARTMENT_SERVICE",
 				joinColumns={@JoinColumn(name="apartment_id")},
 				inverseJoinColumns={@JoinColumn(name="service_id")})

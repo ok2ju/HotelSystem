@@ -83,7 +83,7 @@ public class ReservateController {
 		Client testClient = (Client) session.getAttribute("client");
 		Apartment testApartment = testClient.getApartment();
 		Service testService = serviceService.getServiceById(serviceId);
-		List<Service> listService = new ArrayList<Service>();
+		List<Service> listService = apartmentService.getAllServicesByApartmentId(testApartment.getId());
 		listService.add(testService);
 		testApartment.setServices(listService);
 		apartmentService.saveApartment(testApartment);

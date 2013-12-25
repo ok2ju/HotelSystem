@@ -3,6 +3,7 @@ package com.univer.hotelSystem.dao;
 import java.util.List;
 
 import com.univer.hotelSystem.domain.Apartment;
+import com.univer.hotelSystem.domain.Service;
 
 public interface ApartmentDAO {
 	
@@ -17,4 +18,6 @@ public interface ApartmentDAO {
 	public Apartment getApartmentById(Integer id);
 	
 	public List<Apartment> findApartmentByCriteria(int numberOfRooms, String classApartment, int floor);
+	
+	public List<Service> getAllServicesByApartmentId(Integer id);
 }

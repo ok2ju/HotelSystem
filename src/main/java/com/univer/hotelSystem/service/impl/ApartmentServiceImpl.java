@@ -49,4 +49,9 @@ public class ApartmentServiceImpl implements ApartmentService {
 		return apartmentDAO.findApartmentByCriteria(numberOfRooms, classApartment, floor);
 	}
 
+	@Transactional
+	public List<com.univer.hotelSystem.domain.Service> getAllServicesByApartmentId(Integer id) {
+		return apartmentDAO.getAllServicesByApartmentId(id);
+	}
+
 }
