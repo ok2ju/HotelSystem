@@ -20,6 +20,16 @@
 </style>
 </head>
 <body>
+<%  
+HttpSession session2 = request.getSession();  
+  
+if(null!=session2.getAttribute("client")){   
+      
+    }  
+else{  
+    response.sendRedirect("/hotelSystem/signin");  
+    }  
+%> 
 	    <!-- Wrap all page content here -->
     <div id="wrap">
 

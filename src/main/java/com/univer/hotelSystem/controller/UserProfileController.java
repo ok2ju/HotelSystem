@@ -33,7 +33,9 @@ public class UserProfileController {
 	public ModelAndView showUserProfile(HttpSession session){
 		ModelAndView model = new ModelAndView("user_profile");
 		Client client = (Client) session.getAttribute("client");
-		Apartment apartment = client.getApartment();
+		
+		Client testClient = clientService.findClientByUsername(client.getUserName());
+		Apartment apartment = testClient.getApartment();
 		List<Service> services = apartment.getServices();
 		
 		model.addObject("apartment", apartment);

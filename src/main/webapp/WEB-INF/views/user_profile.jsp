@@ -21,6 +21,16 @@
 </style>
 </head>
 <body>
+<%  
+HttpSession session2 = request.getSession();  
+  
+if(null!=session2.getAttribute("client")){   
+      
+    }  
+else{  
+    response.sendRedirect("/hotelSystem/signin");  
+    }  
+%>
 	    <!-- Wrap all page content here -->
     <div id="wrap">
 
@@ -39,7 +49,7 @@
 		  <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">My Profile</a></li>
+              <li><a href="<c:url value="userProfile"/>">My Profile</a></li>
               <li><a href="<c:url value="reservate"/>">Make a reservation</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -72,7 +82,6 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="apartment" items="${apartment}">
 					<tr>
 						<td>${apartment.numberOfRoom}</td>
 						<td>${apartment.classApartment}</td>
@@ -81,7 +90,6 @@
 						<td>${apartment.info}</td>
 						<td>${apartment.cost}</td>
 					</tr>
-				</c:forEach>
 			</tbody>
 		</table>
 		<div class="panel-heading">Services</div>
